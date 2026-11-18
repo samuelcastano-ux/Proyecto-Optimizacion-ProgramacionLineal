@@ -1,0 +1,113 @@
+{
+  "ejemplos": [
+    {
+      "id": "max-dos-variables",
+      "titulo": "Maximización con dos variables (método gráfico y simplex)",
+      "descripcion": "Problema de mezcla de producción con tres restricciones de menor o igual; se resuelve por el método gráfico y por simplex.",
+      "sentido": "max",
+      "variables": ["x1", "x2"],
+      "coeficientes_objetivo": ["50", "80"],
+      "restricciones": [
+        { "coeficientes": ["2", "1"], "signo": "<=", "lado_derecho": "100" },
+        { "coeficientes": ["1", "3"], "signo": "<=", "lado_derecho": "90" },
+        { "coeficientes": ["0", "1"], "signo": "<=", "lado_derecho": "40" }
+      ],
+      "solucion": { "x1": "42", "x2": "16", "Z": "3380" },
+      "usos": { "R1": "100", "R2": "90", "R3": "16" },
+      "holguras": { "R1": "0", "R2": "0", "R3": "24" },
+      "vertices": [
+        { "x1": "0", "x2": "0", "Z": "0" },
+        { "x1": "50", "x2": "0", "Z": "2500" },
+        { "x1": "42", "x2": "16", "Z": "3380" },
+        { "x1": "0", "x2": "30", "Z": "2400" }
+      ],
+      "optimo": { "x1": "42", "x2": "16" },
+      "precios_sombra": { "R1": "14", "R2": "22", "R3": "0" },
+      "costos_reducidos": { "x1": "0", "x2": "0" },
+      "rangos_coeficientes": {
+        "x1": { "minimo": "80/3", "maximo": "160" },
+        "x2": { "minimo": "25", "maximo": "150" }
+      },
+      "rangos_lado_derecho": {
+        "R1": { "minimo": "30", "maximo": "180" },
+        "R2": { "minimo": "50", "maximo": "150" },
+        "R3": { "minimo": "16", "maximo": "+∞" }
+      }
+    },
+    {
+      "id": "gran-m-minimizacion",
+      "titulo": "Minimización por el método de la Gran M",
+      "descripcion": "Problema con restricciones de igualdad y de mayor o igual; el tablero inicial usa variables artificiales penalizadas con M.",
+      "sentido": "min",
+      "variables": ["x1", "x2"],
+      "coeficientes_objetivo": ["4", "1"],
+      "restricciones": [
+        { "coeficientes": ["3", "1"], "signo": "=", "lado_derecho": "3" },
+        { "coeficientes": ["4", "3"], "signo": ">=", "lado_derecho": "6" },
+        { "coeficientes": ["-1", "-2"], "signo": ">=", "lado_derecho": "-4" }
+      ],
+      "forma_estandar": [
+        "3x1 + x2 + a1 = 3",
+        "4x1 + 3x2 - s2 + a2 = 6",
+        "x1 + 2x2 + s3 = 4"
+      ],
+      "funcion_penalizada": "Min Z = 4x1 + x2 + M*a1 + M*a2",
+      "tablero_inicial": {
+        "columnas": ["x1", "x2", "s2", "a1", "a2", "s3", "b"],
+        "filas": [
+          {
+            "base": "a1",
+            "cb": "M",
+            "coeficientes": ["3", "1", "0", "1", "0", "0"],
+            "lado_derecho": "3",
+            "razon": "3/3 = 1"
+          },
+          {
+            "base": "a2",
+            "cb": "M",
+            "coeficientes": ["4", "3", "-1", "0", "1", "0"],
+            "lado_derecho": "6",
+            "razon": "6/4 = 3/2"
+          },
+          {
+            "base": "s3",
+            "cb": "0",
+            "coeficientes": ["1", "2", "0", "0", "0", "1"],
+            "lado_derecho": "4",
+            "razon": "4/1 = 4"
+          }
+        ],
+        "cj_menos_zj": ["4 - 7M", "1 - 4M", "M", "0", "0", "0"],
+        "z": "9M"
+      },
+      "iteracion": { "entra": "x1", "sale": "a1", "pivote": "3" },
+      "solucion": { "x1": "2/5", "x2": "9/5", "Z": "17/5" }
+    },
+    {
+      "id": "modelo-diez-variables",
+      "titulo": "Modelo de diez variables (maqueta de diseño)",
+      "descripcion": "Maqueta de estructura para diez variables y tres restricciones, sin solución; sirve para probar el diseño de la interfaz.",
+      "sentido": "max",
+      "variables": ["x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9", "x10"],
+      "coeficientes_objetivo": ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9", "c10"],
+      "restricciones": [
+        {
+          "coeficientes": ["a1,1", "a1,2", "a1,3", "a1,4", "a1,5", "a1,6", "a1,7", "a1,8", "a1,9", "a1,10"],
+          "signo": "<=",
+          "lado_derecho": "b1"
+        },
+        {
+          "coeficientes": ["a2,1", "a2,2", "a2,3", "a2,4", "a2,5", "a2,6", "a2,7", "a2,8", "a2,9", "a2,10"],
+          "signo": "<=",
+          "lado_derecho": "b2"
+        },
+        {
+          "coeficientes": ["a3,1", "a3,2", "a3,3", "a3,4", "a3,5", "a3,6", "a3,7", "a3,8", "a3,9", "a3,10"],
+          "signo": "<=",
+          "lado_derecho": "b3"
+        }
+      ],
+      "nota": "Maqueta de diseño: los coeficientes son marcadores (a1,1 ... a3,10 y c1 ... c10) y no representan valores numéricos; la solución se implementará en un sprint posterior."
+    }
+  ]
+}

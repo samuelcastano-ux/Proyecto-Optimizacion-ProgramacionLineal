@@ -1,0 +1,56 @@
+/*
+ * tokens.css — Variables de diseño del prototipo.
+ * Paleta tomada del boceto, escala de espacio de 8 px y jerarquía tipográfica.
+ */
+
+:root {
+  /* Colores de marca */
+  --color-primario: #126344;
+  --color-primario-oscuro: #153b2c;
+  --color-primario-suave: #e2efe8;
+  --color-fondo: #f5f8f6;
+  --color-superficie: #ffffff;
+  --color-texto: #1b2925;
+  --color-texto-suave: #62716b;
+  --color-borde: #dce5df;
+  --color-azul: #356ba2;
+  --color-azul-suave: #e7eff8;
+  --color-naranja: #b86b21;
+  --color-naranja-suave: #f8ecdf;
+  --color-error: #9c2b2b;
+  --color-error-suave: #fbebeb;
+
+  /* Escala de espacio (8 px) */
+  --esp-1: 8px;
+  --esp-2: 16px;
+  --esp-3: 24px;
+  --esp-4: 32px;
+  --esp-5: 48px;
+  --esp-6: 64px;
+
+  /* Radios y sombras */
+  --radio-s: 8px;
+  --radio-m: 14px;
+  --radio-l: 20px;
+  --sombra-suave: 0 10px 30px rgba(21, 59, 44, 0.08);
+  --sombra-media: 0 18px 45px rgba(21, 59, 44, 0.12);
+
+  /* Tipografía */
+  --fuente-base: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fuente-formula: "Cambria", "Georgia", "Times New Roman", serif;
+  --texto-xs: 0.8125rem;
+  --texto-s: 0.875rem;
+  --texto-m: 1rem;
+  --texto-l: 1.25rem; /* 20 px */
+  --texto-xl: 2rem; /* 32 px */
+  --texto-2xl: 2.5rem;
+  --interlineado: 1.55;
+
+  /* Foco visible (accesibilidad AA) */
+  --foco: 3px solid var(--color-azul);
+  --foco-desplazamiento: 2px;
+
+  /* Anchos de contenido */
+  --ancho-contenido: 1240px;
+  --ancho-formulario: 720px;
+}
