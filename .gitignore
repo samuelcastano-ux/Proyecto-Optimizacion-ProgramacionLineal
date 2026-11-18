@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+backend/.venv/
+.venv/
+
+# Node / Vite
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Editores y sistema
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Variables de entorno
+.env
+.env.*
